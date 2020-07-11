@@ -1,36 +1,39 @@
-import React from 'react';
-import logo from './Logo.svg';
+import React, {Component} from 'react';
 import styled from 'styled-components'
-import './App.css';
 import { AppHeader } from './AppHeader';
+import logo from './Logo.svg';
 import { Logo } from './Logo';
+import SearchBar from './SearchBar';
+import SearchEngine from './SearchEngine';
+import Extras from './Extras';
 
-const App = () => {
+class App extends Component {
+  state = {
+    searchparams: [
+      {
+        question: "",
+        answers: [],
+        successful: false
+      }
+    ]
+  }
+
+  render() {
   return (
     <AppDiv>
       <AppHeader>
         <Logo src={logo} alt="logo" />
-        <p>
-          Oops, guess it didn't load...
-          <br />
-          Here's a cute Corgi while you wait...:) 
-        </p>
-        <Corgi
-          src="http://placecorgi.com/300/300"
-          alt="Cute corgi uwu"
-          //rel="noopener noreferrer"
-        />
       </AppHeader>
+      <SearchBar searchparams={this.state.searchparams} getQuestion={this.getQuestion}/>
+      <SearchEngine searchparams={this.state.searchparams}/>
+      <Extras />
+      
     </AppDiv>
-  );
-}
+  )
+}}
 
 const AppDiv = styled.div`
   text-align: center;
 `;
 
-const Corgi = styled.img `
-  width: 100%;
-  height: 100%;
-`;
 export default App;

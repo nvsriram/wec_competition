@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const AppHeader = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #191919;
+  min-height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
